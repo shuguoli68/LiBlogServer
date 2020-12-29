@@ -17,6 +17,13 @@
     <properties>
         <java.version>1.8</java.version>
         <kotlin.version>1.4.21</kotlin.version>
+        <jpa.version>2.3.6.RELEASE</jpa.version>
+        <slf4j.version>1.6.6</slf4j.version>
+        <log4j.version>1.2.12</log4j.version>
+        <mybatis.version>3.4.0</mybatis.version>
+        <mysql.version>5.1.47</mysql.version>
+        <boot-starter.version>2.1.0</boot-starter.version>
+        <pagehelper.version>1.2.12</pagehelper.version>
     </properties>
 
     <dependencies>
@@ -52,6 +59,61 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+
+        <!--start  数据库  -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${boot-starter.version}</version>
+        </dependency>
+        <!--end  数据库  -->
+
+        <!--start  分页  -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>${pagehelper.version}</version>
+        </dependency>
+        <!--end  分页  -->
+
+        <!--start jpa-->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${jpa.version}</version>
+        </dependency>
+        <!--end jpa-->
+
+        <!-- log end -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!-- log end -->
+
+
     </dependencies>
 
     <build>
