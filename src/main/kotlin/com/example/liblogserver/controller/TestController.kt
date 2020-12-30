@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController
 class TestController {
     @RequestMapping(value = ["/"])
     fun liGet():String{
+//        5/0
         return "Hello"
     }
 }
