@@ -1,5 +1,6 @@
 package com.example.liblogserver.controller
 
+import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
  * 测试接口
  */
 
-@RestController
+@Controller
 class TestController {
     @RequestMapping(value = ["/"])
     fun liGet():String{
@@ -26,5 +27,10 @@ class TestController {
     @RequestMapping(value = ["/aspect/{name}"])
     fun liAspect(@PathVariable name:String) : String{
         return name
+    }
+
+    @RequestMapping(value = ["/index"])
+    fun index() : String{
+        return "index"
     }
 }

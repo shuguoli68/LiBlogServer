@@ -5,7 +5,6 @@ import org.springframework.boot.runApplication
 
 @SpringBootApplication
 class LiblogserverApplication
-
-fun main(args: Array<String>) {
+inline fun main(args: Array<String>) {
     runApplication<LiblogserverApplication>(*args)
 }
