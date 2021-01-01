@@ -1,5 +1,6 @@
 package com.example.liblogserver.controller
 
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -20,5 +21,10 @@ class TestController {
     @RequestMapping(value = ["/e"])
     fun liError(){
         5/0
+    }
+
+    @RequestMapping(value = ["/aspect/{name}"])
+    fun liAspect(@PathVariable name:String) : String{
+        return name
     }
 }

@@ -102,6 +102,12 @@
         </dependency>
         <!-- log end -->
 
+        <!--start aop-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <!--end aop-->
 
     </dependencies>
 
