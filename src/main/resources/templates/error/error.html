@@ -5,10 +5,9 @@
     <title>error</title>
 </head>
 <body>
-<h1>错误</h1>
-<p>详情：</p>
+<h1>请求错误</h1>
 <div>
-    <div th:utext="'&lt;!--'" th:remove="tag"></div>
+    <!--<div th:utext="'&lt;!&#45;&#45;'" th:remove="tag"></div>
     <div th:utext="'Failed Request URL :' + ${url}" th:remove="tag"></div>
     <div th:utext="'Exception message : ' + ${exception.message}" th:remove="tag"></div>
     <ul th:remove="tag">
@@ -16,7 +15,13 @@
             <span th:utext="${st}" th:remove="tag"></span>
         </li>
     </ul>
-    <div th:utext="'--&lt;!--'" th:remove="tag"></div>
+    <div th:utext="'&#45;&#45;&lt;!&#45;&#45;'" th:remove="tag"></div>-->
+
+    <div>
+        路径 : [[${url}]]
+        <br>
+        信息 : [[${exception}]]
+    </div>
 </div>
 </body>
 </html>

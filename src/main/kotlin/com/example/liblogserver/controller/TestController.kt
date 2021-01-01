@@ -16,4 +16,9 @@ class TestController {
 //        5/0
         return "Hello"
     }
+
+    @RequestMapping(value = ["/e"])
+    fun liError(){
+        5/0
+    }
 }
