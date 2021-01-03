@@ -1,7 +1,9 @@
 package com.example.liblogserver.po;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created on 2021/1/2 14:53
@@ -28,8 +30,45 @@ public class Blog extends BaseBean{
     private Date createTime;
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateTime;
+    @ManyToOne
+    private Type mType;
+    @ManyToMany(cascade = {CascadeType.PERSIST})
+    private List<Tag> tags = new ArrayList<>();
+    @ManyToOne
+    private User mUser;
+    @OneToMany(mappedBy = "mBlog")
+    private List<Comment> comments = new ArrayList<>();
 
-    public Blog() {
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public User getmUser() {
+        return mUser;
+    }
+
+    public void setmUser(User mUser) {
+        this.mUser = mUser;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
+    public Type getmType() {
+        return mType;
+    }
+
+    public void setmType(Type mType) {
+        this.mType = mType;
     }
 
     public Long getId() {
