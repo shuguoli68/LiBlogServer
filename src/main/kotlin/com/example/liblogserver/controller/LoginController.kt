@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession
 @RequestMapping("/admin")
 class LoginController {
 
-    @Autowired
+//    @Autowired
     lateinit var userService: UserService
 
     @GetMapping
