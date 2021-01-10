@@ -1,11 +1,11 @@
 package com.example.liblogserver.service
 
-import com.example.liblogserver.po.TUserEntity
+import com.example.liblogserver.po.User
 
 /**
  * Created on 2021/1/4 22:12
  * @author shuguo
  */
 interface UserService {
-    fun checkUser(name:String, password:String):TUserEntity
+    fun checkUser(name:String, password:String):User
 }
