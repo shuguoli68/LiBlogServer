@@ -7,5 +7,6 @@ import com.example.liblogserver.po.User
  * @author shuguo
  */
 interface UserService {
+    fun addUser(user:User):Int
     fun checkUser(name:String, password:String):User
 }

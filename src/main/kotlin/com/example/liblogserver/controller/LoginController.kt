@@ -1,12 +1,11 @@
 package com.example.liblogserver.controller
 
+import com.example.liblogserver.po.User
+import com.example.liblogserver.response.BaseResponse
 import com.example.liblogserver.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.servlet.mvc.support.RedirectAttributes
 import javax.servlet.http.HttpSession
 
@@ -45,5 +44,15 @@ class LoginController {
         return "redirect:/admin"
     }
 
-
+    @PostMapping("/register")
+    fun login(@RequestBody user:User):BaseResponse<Boolean>{
+        val value = userService.addUser(user)
+        val response = BaseResponse(1, "注册成功！", true)
+        if (value < 0){
+            response.code = -1
+            response.msg = "注册失败"
+            response.data = false
+        }
+        return response
+    }
 }

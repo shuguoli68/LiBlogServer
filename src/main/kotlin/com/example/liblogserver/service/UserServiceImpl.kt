@@ -15,6 +15,10 @@ class UserServiceImpl : UserService{
     @Autowired
     lateinit var userMapper: UserMapper
 
+    override fun addUser(user: User): Int {
+        return userMapper.addUser(user)
+    }
+
     override fun checkUser(name: String, password: String) :User{
         return userMapper.findByNamePwd(name, password)
     }
