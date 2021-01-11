@@ -1,6 +1,6 @@
 package com.example.liblogserver.service
 
-import com.example.liblogserver.dao.UserRepository
+import com.example.liblogserver.mapper.UserMapper
 import com.example.liblogserver.po.User
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -13,11 +13,10 @@ import org.springframework.stereotype.Service
 class UserServiceImpl : UserService{
 
     @Autowired
-    lateinit var userRepository: UserRepository
+    lateinit var userMapper: UserMapper
 
     override fun checkUser(name: String, password: String) :User{
-        val user = userRepository.findByNamePwd(name, password)
-        return user
+        return userMapper.findByNamePwd(name, password)
     }
 
 }
