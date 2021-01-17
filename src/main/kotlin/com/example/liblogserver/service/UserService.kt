@@ -9,4 +9,5 @@ import com.example.liblogserver.po.User
 interface UserService {
     fun addUser(user:User):Int
     fun checkUser(name:String, password:String):User
+    fun listUser():List<User>
 }

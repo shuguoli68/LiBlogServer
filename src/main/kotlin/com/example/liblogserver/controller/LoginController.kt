@@ -55,4 +55,10 @@ class LoginController {
         }
         return response
     }
+
+    @PostMapping("/user/list")
+    fun list():BaseResponse<List<User>>{
+        val value = userService.listUser()
+        return BaseResponse(1, "已注册用户", value)
+    }
 }

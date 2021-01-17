@@ -23,4 +23,8 @@ class UserServiceImpl : UserService{
         return userMapper.findByNamePwd(name, password)
     }
 
+    override fun listUser(): List<User> {
+        return userMapper.listUser()
+    }
+
 }
