@@ -1,4 +1,4 @@
-package com.example.liblogserver.handler
+package com.example.liblogserver.config
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

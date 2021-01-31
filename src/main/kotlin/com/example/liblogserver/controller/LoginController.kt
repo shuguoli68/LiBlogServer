@@ -3,6 +3,8 @@ package com.example.liblogserver.controller
 import com.example.liblogserver.po.User
 import com.example.liblogserver.response.BaseResponse
 import com.example.liblogserver.service.UserService
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
@@ -13,7 +15,8 @@ import javax.servlet.http.HttpSession
  * Created on 2021/1/6 23:18
  * @author shuguo
  */
-@Controller
+@Api(value = "/Login", tags = arrayOf("登录注册相关接口"))
+@RestController
 @RequestMapping("/admin")
 class LoginController {
 
@@ -25,6 +28,7 @@ class LoginController {
         return "admin/login"
     }
 
+    @ApiOperation(value = "登录")
     @PostMapping("/login")
     fun login(@RequestParam name:String, @RequestParam pwd:String, session:HttpSession, attributes:RedirectAttributes):String{
         val user = userService.checkUser(name, pwd)
@@ -38,12 +42,14 @@ class LoginController {
         }
     }
 
+    @ApiOperation(value = "登出")
     @GetMapping("/logout")
     fun logout(session: HttpSession):String{
         session.removeAttribute("user")
         return "redirect:/admin"
     }
 
+    @ApiOperation(value = "注册")
     @PostMapping("/register")
     fun login(@RequestBody user:User):BaseResponse<Boolean>{
         val value = userService.addUser(user)
@@ -56,6 +62,7 @@ class LoginController {
         return response
     }
 
+    @ApiOperation(value = "已注册用户列表")
     @PostMapping("/user/list")
     fun list():BaseResponse<List<User>>{
         val value = userService.listUser()

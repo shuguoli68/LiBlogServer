@@ -1,29 +1,41 @@
 package com.example.liblogserver.po;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
+@ApiModel(value = "User", description = "User用户信息")
 @Entity
 @Table(name = "t_user")
 public class User {
 
+    @ApiModelProperty(value = "User表的id,自增")
     @Id
     @GeneratedValue
     private Long id;
+    @ApiModelProperty(value = "昵称")
     private String nickname;
+    @ApiModelProperty(value = "用户名")
     private String username;
+    @ApiModelProperty(value = "mim")
     private String password;
+    @ApiModelProperty(value = "邮箱")
     private String email;
+    @ApiModelProperty(value = "用户头像")
     private String avatar;
+    @ApiModelProperty(value = "类型")
     private Integer type;
+    @ApiModelProperty(value = "创建时间")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
+    @ApiModelProperty(value = "更新时间")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateTime;
-
+    @ApiModelProperty(value = "用户旗下的文章列表")
     @OneToMany(mappedBy = "user")
     private List<Blog> blogs = new ArrayList<>();
 
