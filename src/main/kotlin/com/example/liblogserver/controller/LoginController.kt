@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.servlet.mvc.support.RedirectAttributes
+import javax.servlet.http.HttpServletResponse
 import javax.servlet.http.HttpSession
 
 /**
@@ -17,36 +18,43 @@ import javax.servlet.http.HttpSession
  */
 @Api(value = "/Login", tags = arrayOf("登录注册相关接口"))
 @RestController
-@RequestMapping("/admin")
 class LoginController {
 
     @Autowired
     lateinit var userService: UserService
 
-    @GetMapping
+    @PostMapping("/admin")
+    @ResponseBody
     fun loginPage():String{
         return "admin/login"
     }
 
+    @PostMapping("/index")
+    @ResponseBody
+    fun indexPage():String{
+        return "admin/index"
+    }
+
     @ApiOperation(value = "登录")
     @PostMapping("/login")
-    fun login(@RequestParam name:String, @RequestParam pwd:String, session:HttpSession, attributes:RedirectAttributes):String{
+    @ResponseBody
+    fun login(@RequestParam name:String, @RequestParam pwd:String, session:HttpSession, attributes:RedirectAttributes, response: HttpServletResponse){
         val user = userService.checkUser(name, pwd)
         if (user != null){
             user.password = ""
             session.setAttribute("user", user)
-            return "admin/index"
+            response.sendRedirect("/index")
         }else{
             attributes.addFlashAttribute("message", "用户名或密码错误")
-            return "redirect:/admin"
+            response.sendRedirect("/admin")
         }
     }
 
     @ApiOperation(value = "登出")
-    @GetMapping("/logout")
-    fun logout(session: HttpSession):String{
+    @PostMapping("/logout")
+    fun logout(session: HttpSession, response: HttpServletResponse){
         session.removeAttribute("user")
-        return "redirect:/admin"
+        response.sendRedirect("redirect:/admin")
     }
 
     @ApiOperation(value = "注册")

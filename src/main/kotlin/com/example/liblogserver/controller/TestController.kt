@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController
  * 测试接口
  */
 
-@Api(value = "/Test", tags = arrayOf("测试服务接口的通畅性"))
+@Api(value = "/Test", tags = ["测试服务接口的通畅性"])
 @RestController
 class TestController {
 
@@ -34,11 +34,5 @@ class TestController {
     @RequestMapping(value = ["/aspect/{name}"])
     fun liAspect(@PathVariable name:String) : String{
         return name
-    }
-
-    @ApiOperation(value = "Get进入index接口")
-    @RequestMapping(value = ["/index"])
-    fun index() : String{
-        return "index"
     }
 }

@@ -2,6 +2,7 @@ package com.example.liblogserver
 
 import org.mybatis.spring.annotation.MapperScan
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.builder.SpringApplicationBuilder
 import org.springframework.boot.runApplication
 import springfox.documentation.swagger2.annotations.EnableSwagger2
 
@@ -11,4 +12,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2
 class LiblogserverApplication
 inline fun main(args: Array<String>) {
     runApplication<LiblogserverApplication>(*args)
+}
+
+@Override
+fun configure(builder: SpringApplicationBuilder) : SpringApplicationBuilder {
+    return builder.sources(LiblogserverApplication::class.java)
 }
