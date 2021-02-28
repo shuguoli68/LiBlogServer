@@ -5,6 +5,7 @@ import com.example.liblogserver.response.BaseResponse
 import com.example.liblogserver.service.UserService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.servlet.ModelAndView
@@ -20,16 +21,18 @@ import javax.servlet.http.HttpSession
 @Api(value = "/Login", tags = arrayOf("登录注册相关接口"))
 @RestController
 class LoginController {
+    private val logger = LoggerFactory.getLogger(this::class.java)
 
     @Autowired
     lateinit var userService: UserService
 
     @ApiOperation(value = "登录")
-    @PostMapping("/login")
+    @RequestMapping("/login")
     @ResponseBody
     fun login(@RequestParam name:String, @RequestParam pwd:String/*, session: HttpSession, attributes: RedirectAttributes*/):ModelAndView{
         val user = userService.checkUser(name, pwd)
         if (user != null){
+            logger.info(user.toString())
             user.password = ""
 //            session.setAttribute("user", user)
             return ModelAndView("redirect:/toIndex")
